@@ -1,0 +1,8 @@
+node_modules/
+
+*.js.map
+npm-debug.log*
+*.tsbuildinfo
+.cache/
+dist/
+.next/
