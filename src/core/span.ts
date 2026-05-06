@@ -74,3 +74,21 @@ export function buildSpanStyles(
 
   return styles;
 }
+
+/**
+ * Validates that a colSpan does not exceed the total number of columns.
+ * Throws a RangeError if the span would overflow the grid.
+ *
+ * @param colSpan - The column span value to validate.
+ * @param totalColumns - The total number of columns in the grid.
+ */
+export function validateColSpan(colSpan: number | 'full', totalColumns: number): void {
+  if (colSpan === 'full') {
+    return;
+  }
+  if (typeof colSpan === 'number' && colSpan > totalColumns) {
+    throw new RangeError(
+      `colSpan (${colSpan}) exceeds totalColumns (${totalColumns}).`
+    );
+  }
+}
