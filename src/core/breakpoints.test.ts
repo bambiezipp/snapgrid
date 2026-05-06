@@ -50,6 +50,12 @@ describe('sortedBreakpointKeys', () => {
     const keys = sortedBreakpointKeys(custom);
     expect(keys).toEqual(['small', 'large']);
   });
+
+  it('returns a single key for a single-entry map', () => {
+    const custom = { only: { min: 0 } } as any;
+    const keys = sortedBreakpointKeys(custom);
+    expect(keys).toEqual(['only']);
+  });
 });
 
 describe('mergeBreakpoints', () => {
@@ -67,5 +73,13 @@ describe('mergeBreakpoints', () => {
   it('does not mutate the base map', () => {
     mergeBreakpoints({ xs: { min: 10, max: 399 } });
     expect(DEFAULT_BREAKPOINTS.xs.min).toBe(0);
+  });
+
+  it('preserves all default keys when no overrides conflict', () => {
+    const merged = mergeBreakpoints({ '3xl': { min: 1920 } } as any);
+    const defaultKeys = Object.keys(DEFAULT_BREAKPOINTS);
+    defaultKeys.forEach((key) => {
+      expect(merged).toHaveProperty(key);
+    });
   });
 });
