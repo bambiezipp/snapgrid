@@ -17,6 +17,10 @@ describe('resolveColSpan', () => {
   it('throws for negative colSpan', () => {
     expect(() => resolveColSpan(-2)).toThrow(RangeError);
   });
+
+  it('throws for non-integer colSpan', () => {
+    expect(() => resolveColSpan(1.5 as any)).toThrow(RangeError);
+  });
 });
 
 describe('resolveRowSpan', () => {
@@ -30,6 +34,10 @@ describe('resolveRowSpan', () => {
 
   it('throws for negative rowSpan', () => {
     expect(() => resolveRowSpan(-1)).toThrow(RangeError);
+  });
+
+  it('throws for non-integer rowSpan', () => {
+    expect(() => resolveRowSpan(2.5 as any)).toThrow(RangeError);
   });
 });
 
@@ -71,6 +79,12 @@ describe('buildSpanStyles', () => {
   it('sets grid-row with rowStart and rowSpan', () => {
     expect(buildSpanStyles({ rowSpan: 2, rowStart: 1 })).toEqual({
       'grid-row': '1 / span 2',
+    });
+  });
+
+  it('sets grid-row-start when only rowStart provided', () => {
+    expect(buildSpanStyles({ rowStart: 2 })).toEqual({
+      'grid-row-start': '2',
     });
   });
 
