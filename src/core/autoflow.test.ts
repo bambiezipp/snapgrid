@@ -17,6 +17,10 @@ describe('normalizeAutoFlow', () => {
   it('throws on invalid direction', () => {
     expect(() => normalizeAutoFlow('diagonal')).toThrow(/Invalid auto-flow direction/);
   });
+
+  it('includes the invalid value in the error message', () => {
+    expect(() => normalizeAutoFlow('sideways')).toThrow('sideways');
+  });
 });
 
 describe('buildAutoFlowStyles', () => {
@@ -49,6 +53,12 @@ describe('buildAutoFlowStyles', () => {
     expect(styles['grid-auto-flow']).toBe('row dense');
     expect(styles['grid-auto-rows']).toBe('200px');
     expect(styles['grid-auto-columns']).toBe('100px');
+  });
+
+  it('does not include keys for undefined properties', () => {
+    const styles = buildAutoFlowStyles({ direction: 'row' });
+    expect(Object.keys(styles)).not.toContain('grid-auto-rows');
+    expect(Object.keys(styles)).not.toContain('grid-auto-columns');
   });
 });
 
