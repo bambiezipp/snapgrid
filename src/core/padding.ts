@@ -61,3 +61,20 @@ export function paddingToCSS(config: PaddingConfig): string {
     .map(([prop, val]) => `${prop}: ${val};`)
     .join(' ');
 }
+
+/**
+ * Merges two PaddingConfigs together, with values in `override` taking
+ * precedence over those in `base`. Useful for combining default padding
+ * with user-supplied overrides.
+ */
+export function mergePaddingConfigs(
+  base: PaddingConfig,
+  override: PaddingConfig
+): PaddingConfig {
+  return {
+    ...base,
+    ...Object.fromEntries(
+      Object.entries(override).filter(([, v]) => v !== undefined)
+    ),
+  };
+}
