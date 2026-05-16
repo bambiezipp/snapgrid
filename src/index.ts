@@ -1,7 +1,6 @@
-// snapgrid — main entry point
-// Re-exports all public utilities
+// src/index.ts — snapgrid public API
 
-export { buildGridStyles, buildSnapCSS } from './core/grid';
+export { buildGridStyles, buildSnapCSS, camelToKebab } from './core/grid';
 export { getPreset, listPresets, mergeWithPreset } from './core/presets';
 export { mediaQueryMin, mediaQueryRange, sortedBreakpointKeys, mergeBreakpoints } from './core/breakpoints';
 export { resolveValue, resolveResponsiveConfig, buildResponsiveCSS } from './core/responsive';
@@ -10,27 +9,40 @@ export { buildAlignmentStyles, buildItemAlignmentStyles, alignmentToCSS } from '
 export { resolveColSpan, resolveRowSpan, buildSpanStyles, validateColSpan } from './core/span';
 export { buildItemPlacement, buildContainerPlacement, placementToCSS } from './core/placement';
 export { normalizeAutoFlow, buildAutoFlowStyles, autoFlowToCSS } from './core/autoflow';
-export { normalizeTrackSize, buildMinMax, resolveTrackSizing, buildTrackTemplate } from './core/minmax';
+export { normalizeTrackSize, buildMinMax, resolveTrackSizing, buildTrackTemplate, buildRepeat } from './core/minmax';
 export { normalizeOrder, buildOrderStyles, buildZIndexStyles, orderToCSS } from './core/order';
 export { normalizeVisibility, buildVisibilityStyles, buildDisplayStyles } from './core/visibility';
-export { normalizeOverflow, buildOverflowStyles, overflowToCSS } from './core/overflow';
+export { normalizeOverflow, normalizeScrollValue, buildOverflowStyles, overflowToCSS } from './core/overflow';
 export { validateAreaMap, buildTemplateAreas, buildTemplateStyles, buildAreaPlacement, listAreaNames } from './core/template';
 export { normalizeDensity, resolveAutoFlow, buildDensityStyles, densityToCSS } from './core/density';
 export { normalizeTrackValue, buildTrackList, buildSizingStyles, sizingToCSS } from './core/sizing';
-export { normalizePadding, buildPaddingStyles, paddingToCSS } from './core/padding';
+export { toCSSValue, normalizePadding, buildPaddingStyles, paddingToCSS, mergePaddingConfigs } from './core/padding';
 export { normalizeMargin, buildMarginStyles, marginToCSS } from './core/margin';
 export { normalizeBorderValue, normalizeRadius, buildBorderStyles, borderToCSS } from './core/border';
-export { normalizeShadow, buildShadowStyles, shadowToCSS } from './core/shadow';
-export { buildTypographyStyles, typographyToCSS } from './core/typography';
+export { normalizeShadowLayer, normalizeShadow, buildShadowStyles, shadowToCSS } from './core/shadow';
+export { toTypographyValue, normalizeFontWeight, buildTypographyStyles, typographyToCSS } from './core/typography';
 export { normalizeOpacity, normalizeBackdropBlur, buildColorStyles, colorToCSS } from './core/color';
-export { normalizeTransition, buildTransitionStyles, transitionToCSS } from './core/transition';
-export { normalizeAnimation, buildAnimationStyles, animationToCSS } from './core/animation';
-export { normalizeCursor, buildCursorStyles, cursorToCSS } from './core/cursor';
+export { toTimeValue, normalizeTransitionLayer, normalizeTransition, buildTransitionStyles, transitionToCSS } from './core/transition';
+export { normalizeAnimationLayer, normalizeAnimation, layerToCSS, buildAnimationStyles } from './core/animation';
+export { normalizeCursor, buildCursorStyles, isValidCursorKeyword, cursorToCSS } from './core/cursor';
 export { normalizeAspectRatio, buildAspectStyles, aspectToCSS } from './core/aspect';
-export { normalizePosition, buildPositionStyles, positionToCSS } from './core/position';
+export { normalizePosition, toOffsetValue, buildPositionStyles, positionToCSS } from './core/position';
 export { normalizeZIndex, buildZIndexStyles, zIndexToCSS } from './core/zindex';
-export { normalizeTransform, buildTransformStyles, transformToCSS } from './core/transform';
+export { normalizeTransform, buildTransformValue, buildTransformStyles, transformToCSS } from './core/transform';
 export { normalizeFilterValue, buildFilterString, buildFilterStyles, filterToCSS } from './core/filter';
-export type { FilterConfig, FilterStyles } from './core/filter';
-
-export { snapgrid } from './core/snapgrid';
+export { normalizeJustifyContent, normalizeAlignItems, buildFlexAlignStyles, flexAlignToCSS } from './core/flexalign';
+export { normalizePointerEvents, normalizeUserSelect, normalizeTouchAction, buildPointerStyles, pointerToCSS } from './core/pointerevents';
+export { toOutlineValue, normalizeOutline, buildOutlineStyles, outlineToCSS } from './core/outline';
+export { normalizeBackground, buildBackgroundStyles, backgroundToCSS } from './core/background';
+export { normalizeBoxSizing, buildBoxSizingStyles, boxSizingToCSS } from './core/boxsizing';
+export { normalizeWhiteSpace, normalizeWordBreak, normalizeTextOverflow, buildWhitespaceStyles, whitespaceToCSS } from './core/whitespace';
+export { normalizeListItemConfig, normalizeListPosition, normalizeListImage, buildListItemStyles, listItemToCSS } from './core/listitem';
+export { toDecorationValue, normalizeTextDecoration, buildTextDecorationStyles, textDecorationToCSS } from './core/textdecoration';
+export { normalizeColumnValue, buildColumnsTemplate, buildColumnsStyles, columnsToCSS } from './core/columns';
+export { normalizeContentValue, normalizeQuotes, buildContentStyles, contentToCSS } from './core/content';
+export { normalizeScrollBehavior, normalizeSnapType, buildScrollStyles, scrollToCSS } from './core/scroll';
+export { normalizeIsolation, normalizeMixBlendMode, normalizeWillChange, buildIsolationStyles, isolationToCSS } from './core/isolation';
+export { normalizeResize, buildResizeStyles, resizeToCSS } from './core/resize';
+export { normalizeObjectFit, normalizeObjectPosition, buildObjectFitStyles, objectFitToCSS } from './core/objectfit';
+export { normalizeClipPath, buildClipStyles, clipToCSS } from './core/clip';
+export type { ClipConfig, ClipShape, ClipInset, ClipCircle, ClipEllipse, ClipPolygon } from './core/clip';
