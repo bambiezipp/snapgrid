@@ -1,4 +1,4 @@
-// src/index.ts — snapgrid public API
+// src/index.ts — Public API for snapgrid
 
 export { buildGridStyles, buildSnapCSS, camelToKebab } from './core/grid';
 export { getPreset, listPresets, mergeWithPreset } from './core/presets';
@@ -11,7 +11,7 @@ export { buildItemPlacement, buildContainerPlacement, placementToCSS } from './c
 export { normalizeAutoFlow, buildAutoFlowStyles, autoFlowToCSS } from './core/autoflow';
 export { normalizeTrackSize, buildMinMax, resolveTrackSizing, buildTrackTemplate, buildRepeat } from './core/minmax';
 export { normalizeOrder, buildOrderStyles, buildZIndexStyles, orderToCSS } from './core/order';
-export { normalizeVisibility, buildVisibilityStyles, buildDisplayStyles } from './core/visibility';
+export { normalizeVisibility, buildVisibilityStyles, buildDisplayStyles as buildVisibilityDisplayStyles } from './core/visibility';
 export { normalizeOverflow, normalizeScrollValue, buildOverflowStyles, overflowToCSS } from './core/overflow';
 export { validateAreaMap, buildTemplateAreas, buildTemplateStyles, buildAreaPlacement, listAreaNames } from './core/template';
 export { normalizeDensity, resolveAutoFlow, buildDensityStyles, densityToCSS } from './core/density';
@@ -34,7 +34,7 @@ export { normalizeJustifyContent, normalizeAlignItems, buildFlexAlignStyles, fle
 export { normalizePointerEvents, normalizeUserSelect, normalizeTouchAction, buildPointerStyles, pointerToCSS } from './core/pointerevents';
 export { toOutlineValue, normalizeOutline, buildOutlineStyles, outlineToCSS } from './core/outline';
 export { normalizeBackground, buildBackgroundStyles, backgroundToCSS } from './core/background';
-export { normalizeBoxSizing, buildBoxSizingStyles, boxSizingToCSS } from './core/boxsizing';
+export { toDimensionValue, normalizeBoxSizing, buildBoxSizingStyles, boxSizingToCSS } from './core/boxsizing';
 export { normalizeWhiteSpace, normalizeWordBreak, normalizeTextOverflow, buildWhitespaceStyles, whitespaceToCSS } from './core/whitespace';
 export { normalizeListItemConfig, normalizeListPosition, normalizeListImage, buildListItemStyles, listItemToCSS } from './core/listitem';
 export { toDecorationValue, normalizeTextDecoration, buildTextDecorationStyles, textDecorationToCSS } from './core/textdecoration';
@@ -45,4 +45,15 @@ export { normalizeIsolation, normalizeMixBlendMode, normalizeWillChange, buildIs
 export { normalizeResize, buildResizeStyles, resizeToCSS } from './core/resize';
 export { normalizeObjectFit, normalizeObjectPosition, buildObjectFitStyles, objectFitToCSS } from './core/objectfit';
 export { normalizeClipPath, buildClipStyles, clipToCSS } from './core/clip';
-export type { ClipConfig, ClipShape, ClipInset, ClipCircle, ClipEllipse, ClipPolygon } from './core/clip';
+export { normalizeAppearance, normalizeCaretColor, normalizeAccentColor, buildAppearanceStyles, appearanceToCSS } from './core/appearance';
+export { normalizeTableLayout, buildTableLayoutStyles, tableLayoutToCSS } from './core/tableLayout';
+
+// display module
+export {
+  normalizeDisplay,
+  normalizeFloat,
+  normalizeClear,
+  buildDisplayStyles,
+  displayToCSS,
+} from './core/display';
+export type { DisplayConfig, DisplayValue, FloatValue, ClearValue } from './core/display';
